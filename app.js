@@ -1,16 +1,11 @@
-(function() {
-    emailjs.init("DLJw8dosxB0vFafya");
-})();
+function sendMail() {
+    let parms = {
+        from_name : document.getElementById("fullName").value,
+        email_id : document.getElementById("email_id").value,
+        subject : document.getElementById("subject").value,
+        message : document.getElementById("message").value,
 
+    }
 
-document.getElementById("contact-form").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    console.log(this)
-    emailjs.sendForm("service_vqsnf7r", "template_ynu4v9d", this)
-        .then(function() {
-            alert('Message sent successfully!');
-        }, function(error) {
-            alert('Failed to send email: ' + JSON.stringify(error));
-        });
-});
+    emailjs.send("service_vqsnf7r", "template_ynu4v9d", parms).then(alert("Email Sent!"))
+}
